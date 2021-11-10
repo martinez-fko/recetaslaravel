@@ -18,7 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/recetas', 'App\Http\Controllers\RecetaController@index');
+Route::get('/recetas', 'App\Http\Controllers\RecetaController@index')->name('recetas.index');
+Route::get('/recetas/create', 'App\Http\Controllers\RecetaController@create')->name('recetas.create');
+Route::post('/recetas', 'App\Http\Controllers\RecetaController@store')->name('recetas.store');
 
 
 Auth::routes();

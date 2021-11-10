@@ -1,0 +1,79 @@
+crear proyecto 
+composer create-project laravel/laravel @nombre --prefer-dist
+
+iniciar servidor desde la carpeta del proyecto desde cmd
+php artisan serve
+
+listar comandos 
+php artisan
+
+-----LIBRERIRA DE AUTENTICACION-----------
+
+descargar libreria de autenticacion 
+composer require laravel/ui
+
+crear libreria de autenticacion en proyecto
+php artisan ui:auth
+
+--------LIBRERIAS --------------
+descargar libreria de bootstrap
+php artisan ui bootstrap
+
+descargar libreria de vue.js
+php artisan ui vue
+
+actualizar vue si da error
+npm update vue-loader
+
+instalar las independencias
+npm install
+
+compilar las independencias
+npm run dev
+
+-------MODELOS Y CONTROLADORES-------
+
+crear controlador
+php artisan make:controller @nombre -r
+
+php artisan make:model @nombre --m
+
+Crear model controller y resource
+php artisan make:model @nombreSingularMayu -mcr
+
+-------------MIGRACIONES-----------
+crear migracion
+php artisan make:migration create_@nombre_table
+
+cargar todas las migraciones
+php artisan migrate 
+
+borra las migraciones (tablas)
+php artisan migrate:rollback 
+
+limpiar bases de datos
+php artisan migrate:fresh 
+
+verificar la configuracion php.ini este sin comentar si da error al migrar
+extension=php_pdo_mysql.dll 
+
+--------------TINKER BD-----------------
+
+abrir gestor para guardar datos 
+php artisan tinker
+
+------INSTALAR IDIOMA EN ESPAÑOL-------
+Descargar paqueteria
+composer require laraveles/spanish
+
+Instalar idiomas
+php artisan laraveles:install-lang 
+
+cambiar idioma ir a la carpeta config -> app.php -> 'locale' => 'es'
+
+------Seeder-----------
+crear un sider
+php artisan make:seeder CategoriasSeeder 
+
+migrar seed
+php artisan db:seed
