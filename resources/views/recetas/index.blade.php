@@ -1,3 +1,5 @@
 @extends('layouts.app')
 
-<h1>Rectas</h1>
+@section('content')
+    <h1>Rectas</h1>
+@endsection
