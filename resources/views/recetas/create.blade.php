@@ -13,7 +13,7 @@
 
     <div class="row justity-content-center mt-5">
         <div class="col-md-8">
-            <form method="post" action="{{ route('recetas.store') }}" novalidate>
+            <form method="post" action="{{ route('recetas.store') }}" enctype="multipart/form-data" novalidate>
                 @csrf
                 <div class="form-group">
                     <label for="titulo">Titulo Receta</label>
@@ -52,7 +52,7 @@
                 <div class="form-group mt-3">
                     <label for="preparacion">Preparación</label>
 
-                    <input type="hidden" name="preparacion" value="{{ old('preparacion') }}">
+                    <input type="hidden" name="preparacion" value="{{ old('preparacion') }}" id="preparacion">
                     <trix-editor 
                         class="form-control @error('preparacion') is-invalid @enderror"
                         input="preparacion">
@@ -67,7 +67,7 @@
                 <div class="form-group mt-3">
                     <label for="ingredientes">Ingredientes</label>
 
-                    <input type="hidden" name="ingredientes" value="{{ old('ingredientes') }}">
+                    <input type="hidden" name="ingredientes" value="{{ old('ingredientes') }}" id="ingredientes">
                     <trix-editor 
                         class="form-control @error('ingredientes') is-invalid @enderror"
                         input="ingredientes">
@@ -77,6 +77,16 @@
                             <strong>{{$message}}</strong>
                         </span>
                     @enderror
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="imagen">Elige la imagen</label>
+                    <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror">
+                    @error('imagen')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
                 </div>
 
                
