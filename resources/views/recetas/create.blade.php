@@ -22,7 +22,7 @@
                         class="form-control @error('titulo') is-invalid @enderror " 
                         id="titulo" 
                         placeholder="Titulo Receta"
-                        value={{ old('titulo') }}
+                        value="{{ old('titulo') }}"
                     >
                         @error('titulo')
                             <span class="invalid-feedback d-block" role="alert">

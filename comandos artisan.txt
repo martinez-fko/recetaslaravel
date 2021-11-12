@@ -77,3 +77,10 @@ php artisan make:seeder CategoriasSeeder
 
 migrar seed
 php artisan db:seed
+
+---Hacer publico una carpeta donde se guarda las imagenes-----
+php artisan storage:link
+
+
+--- intervention image----
+composer require intervention/image
