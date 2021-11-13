@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Receta;
 use Illuminate\Http\Request;
+use App\Models\CategoriaReceta;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -34,7 +35,11 @@ class RecetaController extends Controller
     {
         //DB::table('categoria_receta')->get()->pluck('nombre','id')->dd();
 
-        $categorias = DB::table('categoria_receta')->get()->pluck('nombre','id');
+        //Obtener las categorias  (sin modelo)
+        //$categorias = DB::table('categoria_recetas')->get()->pluck('nombre','id');
+
+        //con modelo
+        $categorias = CategoriaReceta::all(['id','nombre']);
 
         return view('recetas.create')->with('categorias', $categorias);
     }
@@ -70,14 +75,24 @@ class RecetaController extends Controller
         $img->save();
 
         //almacenar en la bd (sin modelo)
-        DB::table('recetas')->insert([
-            'titulo' => $data['titulo'],
-            'preparacion' => $data['preparacion'],
-            'ingredientes' => $data['ingredientes'],
-            'imagen' => $ruta_imagen,
-            'user_id' => Auth::user()->id,
-            'categoria_id' => $data['categoria'],
-        ]);
+        // DB::table('recetas')->insert([
+        //     'titulo' => $data['titulo'],
+        //     'preparacion' => $data['preparacion'],
+        //     'ingredientes' => $data['ingredientes'],
+        //     'imagen' => $ruta_imagen,
+        //     'user_id' => Auth::user()->id,
+        //     'categoria_id' => $data['categoria'],
+        // ]);
+
+        //Almacenar en la BD con modelo
+            auth()->user()->recetas()->create([
+                'titulo' => $data['titulo'],
+                'preparacion' => $data['preparacion'],
+                'ingredientes' => $data['ingredientes'],
+                'imagen' => $ruta_imagen,
+                'categoria_id' => $data['categoria']
+            ]);
+
 
         //Redireccionar
         return redirect()->action('App\Http\Controllers\RecetaController@index');
@@ -93,7 +108,7 @@ class RecetaController extends Controller
      */
     public function show(Receta $receta)
     {
-        //
+        return view('recetas.show', compact('receta'));;
     }
 
     /**
