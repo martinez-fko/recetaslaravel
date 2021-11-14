@@ -83,4 +83,11 @@ php artisan storage:link
 
 
 --- intervention image----
-composer require intervention/image
+composer require intervention/image 
+
+
+-- Moment JS -----
+npm i --save moment
+
+---Crear policy para permisos----
+php artisan make:policy RecetaPolicy -m Receta
