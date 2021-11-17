@@ -90,4 +90,11 @@ composer require intervention/image
 npm i --save moment
 
 ---Crear policy para permisos----
-php artisan make:policy RecetaPolicy -m Receta
+php artisan make:policy RecetaPolicy -m Receta 
+
+
+--- instalar Sweetalert1 https://www.npmjs.com/package/vue-sweetalert2 ----
+npm install -S vue-sweetalert2
+
+importar estilos
+import "sweetalert2/dist/sweetalert2.min.css"
