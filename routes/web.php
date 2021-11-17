@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\RecetaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/recetas', 'App\Http\Controllers\RecetaController@index')->name('recetas.index');
-Route::get('/recetas/create', 'App\Http\Controllers\RecetaController@create')->name('recetas.create');
-Route::post('/recetas', 'App\Http\Controllers\RecetaController@store')->name('recetas.store');
-Route::get('/recetas/{receta}', 'App\Http\Controllers\RecetaController@show')->name('recetas.show');
-Route::get('/recetas/{receta}/edit', 'App\Http\Controllers\RecetaController@edit')->name('recetas.edit');
-Route::put('/recetas/{receta}','App\Http\Controllers\RecetaController@update')->name('recetas.update');
-Route::delete('/recetas/{receta}','App\Http\Controllers\RecetaController@destroy')->name('recetas.destroy');
+//Route::get('/recetas', 'App\Http\Controllers\RecetaController@index')->name('recetas.index');
+Route::get('/recetas', [RecetaController::class,'index'] )->name('recetas.index');
+Route::get('/recetas/create', [RecetaController::class,'create'])->name('recetas.create');
+Route::post('/recetas', [RecetaController::class,'store'])->name('recetas.store');
+Route::get('/recetas/{receta}', [RecetaController::class,'show'])->name('recetas.show');
+Route::get('/recetas/{receta}/edit', [RecetaController::class,'edit'])->name('recetas.edit');
+Route::put('/recetas/{receta}', [RecetaController::class,'update'])->name('recetas.update');
+Route::delete('/recetas/{receta}', [RecetaController::class,'destroy'])->name('recetas.destroy');
+
+Route::get('/perfiles/{perfil}', [PerfilController::class,'show'] )->name('perfiles.show');
 
 Auth::routes();
 
