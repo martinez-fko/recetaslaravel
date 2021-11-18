@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 
 class RecetaController extends Controller
 {
-   
+
     public function __construct(){
         $this->middleware('auth', ['except' => 'show']);
     }
@@ -70,7 +70,7 @@ class RecetaController extends Controller
         //obtener la ruta de la imagen
         $ruta_imagen =  $request['imagen']->store('upload-recetas','public');
 
-        //Resize de la imagen 
+        //Resize de la imagen
         $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(1000,550);
         $img->save();
 
@@ -121,7 +121,7 @@ class RecetaController extends Controller
     {
         //revisar el policy
         $this->authorize('update', $receta);
-        
+
         $categorias = CategoriaReceta::all(['id','nombre']);
 
         return view('recetas.edit', compact ('categorias', 'receta'));
@@ -158,7 +158,7 @@ class RecetaController extends Controller
             //obtener la ruta de la imagen
             $ruta_imagen =  $request['imagen']->store('upload-recetas','public');
 
-            //Resize de la imagen 
+            //Resize de la imagen
             $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(1000,550);
             $img->save();
 
