@@ -22,7 +22,6 @@ class UsuarioSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'url' => 'http://127.0.0.1:8000/login',
         ]);
-        $user->perfil()->create();
 
         $user2 = User::create([
             'name' => 'maria',
@@ -30,7 +29,6 @@ class UsuarioSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'url' => 'http://127.0.0.1:8000/login',
         ]);
-        $user2->perfil()->create();
 
     }
 }

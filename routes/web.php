@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/recetas', 'App\Http\Controllers\RecetaController@index')->name('recetas.index');
+Route::get('/recetas', 'App\Http\Controllers\RecetaController@index')->name('recetas.index');
 Route::get('/recetas', [RecetaController::class,'index'] )->name('recetas.index');
 Route::get('/recetas/create', [RecetaController::class,'create'])->name('recetas.create');
 Route::post('/recetas', [RecetaController::class,'store'])->name('recetas.store');
@@ -28,6 +28,8 @@ Route::get('/recetas/{receta}', [RecetaController::class,'show'])->name('recetas
 Route::get('/recetas/{receta}/edit', [RecetaController::class,'edit'])->name('recetas.edit');
 Route::put('/recetas/{receta}', [RecetaController::class,'update'])->name('recetas.update');
 Route::delete('/recetas/{receta}', [RecetaController::class,'destroy'])->name('recetas.destroy');
+
+//Route::resource('recetas', RecetaController::class);
 
 Route::get('/perfiles/{perfil}', [PerfilController::class,'show'] )->name('perfiles.show');
 Route::get('/perfiles/{perfil}/edit', [PerfilController::class, 'edit'])->name('perfiles.edit');

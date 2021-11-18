@@ -97,4 +97,11 @@ php artisan make:policy RecetaPolicy -m Receta
 npm install -S vue-sweetalert2
 
 importar estilos
-import "sweetalert2/dist/sweetalert2.min.css"
+import "sweetalert2/dist/sweetalert2.min.css" 
+
+-- Arreglar estilo de paginate---
+ir a App\Providers\AppServiceProvider  
+agregar use
+use Illuminate\Pagination\Paginator; 
+Y dentro de la parte de la funcion boot
+Paginator::useBootstrap();
