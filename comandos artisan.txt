@@ -57,6 +57,9 @@ php artisan migrate:fresh
 verificar la configuracion php.ini este sin comentar si da error al migrar
 extension=php_pdo_mysql.dll 
 
+migrar nuevas migraciones realizadas sin borrar datos
+php artisan migrate --path=/database/migrations
+
 --------------TINKER BD-----------------
 
 abrir gestor para guardar datos 

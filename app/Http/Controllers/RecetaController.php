@@ -23,12 +23,14 @@ class RecetaController extends Controller
 
         //$recetas = auth()->user()->recetas;
 
-        $usuario = auth()->user()->id;
+        $usuario = auth()->user();
 
         //Recetas con paginación
-        $recetas = Receta::where('user_id', $usuario)->paginate(2);
+        $recetas = Receta::where('user_id', $usuario->id)->paginate(4);
 
-        return view('recetas.index')->with('recetas',$recetas);
+        return view('recetas.index')
+            ->with('recetas',$recetas)
+            ->with('usuario',$usuario);
     }
 
     /**
@@ -113,7 +115,13 @@ class RecetaController extends Controller
      */
     public function show(Receta $receta)
     {
-        return view('recetas.show', compact('receta'));;
+        //Obtener si el usuario actual le gusta la receta y esta autenticado
+        $like = (auth()->user()) ? auth()->user()->meGusta->contains($receta->id) : false;
+
+        //Pasa la cantidad de likes a la vista
+        $likes = $receta->likes->count();
+
+        return view('recetas.show', compact('receta','like','likes'));
     }
 
     /**
