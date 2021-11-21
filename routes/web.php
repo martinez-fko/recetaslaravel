@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikesController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RecetaController;
+use App\Http\Controllers\InicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,7 @@ use App\Http\Controllers\RecetaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [InicioController::class,'index'])->name('inicio.index');
 
 Route::get('/recetas', 'App\Http\Controllers\RecetaController@index')->name('recetas.index');
 Route::get('/recetas', [RecetaController::class,'index'] )->name('recetas.index');
