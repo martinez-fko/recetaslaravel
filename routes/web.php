@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikesController;
+use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RecetaController;
-use App\Http\Controllers\InicioController;
+use App\Http\Controllers\CategoriasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,12 @@ Route::get('/recetas/{receta}/edit', [RecetaController::class,'edit'])->name('re
 Route::put('/recetas/{receta}', [RecetaController::class,'update'])->name('recetas.update');
 Route::delete('/recetas/{receta}', [RecetaController::class,'destroy'])->name('recetas.destroy');
 
+Route::get('/categorias/{categoriaReceta}', [CategoriasController::class, 'show'])->name('categorias.show');
+
 //Route::resource('recetas', RecetaController::class);
+
+//Buscador de recetas
+Route::get('/buscar', [RecetaController::class,'search'])->name('buscar.show');
 
 Route::get('/perfiles/{perfil}', [PerfilController::class,'show'] )->name('perfiles.show');
 Route::get('/perfiles/{perfil}/edit', [PerfilController::class, 'edit'])->name('perfiles.edit');

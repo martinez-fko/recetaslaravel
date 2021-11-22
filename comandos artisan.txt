@@ -112,3 +112,6 @@ Paginator::useBootstrap();
 
 -- Instalar owl.carousel------------
 npm i owl.carousel
+
+---- Crear Provider-------
+php artisan make:provider CategoriasProvider
