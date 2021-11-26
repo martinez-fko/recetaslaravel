@@ -33,7 +33,7 @@ npm run dev
 
 -------MODELOS Y CONTROLADORES-------
 
-crear controlador
+crear controlador con resource
 php artisan make:controller @nombre -r
 
 php artisan make:model @nombre --m
@@ -114,4 +114,53 @@ Paginator::useBootstrap();
 npm i owl.carousel
 
 ---- Crear Provider-------
-php artisan make:provider CategoriasProvider
+php artisan make:provider CategoriasProvider 
+
+
+
+
+
+//////////////////////////////////////////////////////
+------Proyecto Devjobs------------------
+
+-----instalar tailwindcss---
+npm install --save-dev tailwindcss laravel-mix-tailwind 
+
+--- configurar tailwindcss---
+npx tailwindcss init
+
+
+///////////////////////////
+
+------Spatie---------------------
+composer require spatie/laravel-permission
+
+
+------collective------
+composer require laravelcollective/html
+-----
+
+
+
+$role1 = Role::create(['name'=>'Admin']);
+        $role2 = Role::create(['name'=>'Ventas']);
+
+        Permission::create(['name'=>'admin.configuracion.index'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=>'admin.configuracion.create'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=>'admin.configuracion.edit'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=>'admin.configuracion.destroy'])->syncRoles([$role1, $role2]);
+
+
+  $user = User::create([
+            'name' => 'Jose',
+            'email' => 'correo@gmail.com',
+            'password' => Hash::make('12345678'),
+        ])->assignRole('Admin');
+
+        $user2 = User::create([
+            'name' => 'maria',
+            'email' => 'maria@gmail.com',
+            'password' => Hash::make('12345678'),
+        ])->assignRole('Ventas');
+
+        User::factory(9)->create();
